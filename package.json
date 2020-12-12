@@ -1,0 +1,33 @@
+{
+  "name": "dynadns",
+  "version": "1.0.0",
+  "description": "self powered dynmamic dns for common registrars",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "check": "node index.js check",
+    "update": "node index.js update"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/L422Y/dynadns.git"
+  },
+  "keywords": [
+    "dynamic",
+    "dns",
+    "goddady"
+  ],
+  "author": "l422y@l422y.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/L422Y/dynadns/issues"
+  },
+  "homepage": "https://github.com/L422Y/dynadns#readme",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "yarn-or-npm": "^3.0.1"
+  }
+}
