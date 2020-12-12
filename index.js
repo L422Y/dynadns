@@ -47,7 +47,8 @@ if(PROVIDER in providers) {
 			})
 			.catch(err => {
 				l(`Error: (${err.status}) ${err.statusText}`)
-				l(err)
+				l(err.response.data)
+				l(err.response.data.fields)
 			})
 
 	});
