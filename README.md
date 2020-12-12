@@ -2,12 +2,24 @@
 
 A self powered dynamic DNS updater using your own registrar.
 
----
 Currently supported providers: *GoDaddy*
+
+---
+
+# How to use
+
+## Installation
+
+ ```
+ git clone https://github.com/L422Y/dynadns/
+ cd dynadns
+ cp .env.example .env
+ ```
 
 ## Configuration
 
-Configure your `.env`:
+Modify your `.env`:
+
 ```
 PROVIDER=godaddy
 HOST=abc123
@@ -19,15 +31,24 @@ SECRET=l2n3ruihf2oq980efno2i3nf2
 ```
 
 PROVIDER is the provider (godaddy only, for now)
+
 HOST is the subdomain you'd like to update the `A` record for
+
 DOMAIN is the domain to modify
+
 DEBUG enables messages to `stdout`
 
 
 You can obtain your KEY and SECRET here:
 * GoDaddy: https://developer.godaddy.com/keys
 
+## Automate the updates
 
+Currently the best way to do this is by using `crontab` (though daemonization is in the works)
+
+```
+*/5 * * * * node path/to/dynadns/index.js
+```
 ---
 
 # Roadmap
@@ -35,12 +56,12 @@ You can obtain your KEY and SECRET here:
 - Refactor check and update into separate implementations
 - Actually parse command line arguments
 - Error handling for missing `.env`
-- Check support for Windows and Linux
+- *[in progress]* Daemon mode with intervaled external IP check (for use with [PM2](https://pm2.keymetrics.io/), or `systemd`)
+- Support for Windows and Linux (may work already)
 - Support for additional registrars
 - Support for custom functionality (for providers without APIs)
 - Support for additional record types (AAAA, CNAME, TXT, MX, PTR)
 - Support for multiple record updates
-- Daemon mode with intervaled external IP check (for use with [PM2](https://pm2.keymetrics.io/), or `systemd`)
 - Daemon install / uninstall command (macOS, Linux)
 
 Feel free to contribute 😎
