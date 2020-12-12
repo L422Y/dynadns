@@ -1,2 +1,2 @@
 # dynadns
-self powered dynmamic dns for common registrars
+self powered dynamic dns for common registrars
