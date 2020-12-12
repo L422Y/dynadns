@@ -28,4 +28,19 @@ You can obtain your KEY and SECRET here:
 * GoDaddy: https://developer.godaddy.com/keys
 
 
-Feel free to contribute ;)
+---
+
+# Roadmap
+
+- Refactor check and update into separate implementations
+- Actually parse command line arguments
+- Error handling for missing `.env`
+- Check support for Windows and Linux
+- Support for additional registrars
+- Support for custom functionality (for providers without APIs)
+- Support for additional record types (AAAA, CNAME, TXT, MX, PTR)
+- Support for multiple record updates
+- Daemon mode with intervaled external IP check (for use with [PM2](https://pm2.keymetrics.io/), or `systemd`)
+- Daemon install / uninstall command (macOS, Linux)
+
+Feel free to contribute 😎
