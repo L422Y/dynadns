@@ -9,3 +9,21 @@ exports.godaddy = {
 		"Content-Type": "application/json" 
 	},
 }
+
+exports.namecheap = { 
+	// namecheap.com
+	// tbd
+	// api docs: https://www.namecheap.com/support/api/methods/domains-dns/
+}
+
+exports.gandi = { 
+	// gandi.net
+	// tbd
+	// api docs: https://docs.gandi.net/en/domain_names/advanced_users/api.html
+}
+
+exports.name = { 
+	// name.com
+	// tbd
+	// api docs: https://www.name.com/api-docs/DNS#UpdateRecord
+}
