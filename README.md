@@ -79,12 +79,13 @@ Alternatively by using `crontab`
 - ~~Actually parse command line arguments~~
 - ~~Daemon mode with intervaled external IP check (for use with [PM2](https://pm2.keymetrics.io/), or `systemd`)~~
 - ~~Error handling for missing `.env`~~
+- Move record(s) config out of `.env` to JSON
+- Support for additional record types (AAAA, CNAME, TXT, MX, PTR)
+- Support for multiple record updates
 - Callbacks / Webhooks after successful updates
 - Support for Windows and Linux (may work already)
 - Support for additional registrars
 - Support for custom functionality (for providers without APIs)
-- Support for additional record types (AAAA, CNAME, TXT, MX, PTR)
-- Support for multiple record updates
 
 
 Feel free to contribute 😎
