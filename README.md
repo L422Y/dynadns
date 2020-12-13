@@ -14,6 +14,7 @@ Currently supported providers: *GoDaddy*
  git clone https://github.com/L422Y/dynadns/
  cd dynadns
  cp .env.example .env
+ npm install
  ```
 
 ## Configuration
@@ -25,43 +26,49 @@ PROVIDER=godaddy
 HOST=abc123
 DOMAIN=domain.com
 DEBUG=true
+INTERVAL=60
 
 KEY=2o43tij2843g0924jngf29j34g02n934g0923n4g02g39
 SECRET=l2n3ruihf2oq980efno2i3nf2
 ```
 
-PROVIDER is the provider (godaddy only, for now)
+`PROVIDER` is the provider (godaddy only, for now)
 
-HOST is the subdomain you'd like to update the `A` record for
+`HOST` is the subdomain you'd like to update the `A` record for
 
-DOMAIN is the domain to modify
+`DOMAIN` is the domain to modify
 
-DEBUG enables messages to `stdout`
+`DEBUG` enables messages to `stdout`
+
+`INTERVAL` enables messages to `stdout`
 
 
 You can obtain your KEY and SECRET here:
 * GoDaddy: https://developer.godaddy.com/keys
 
-## Automate the updates
+## Constantly update the address
 
-Currently the best way to do this is by using `crontab` (though daemonization is in the works)
+One way to do this is by using `crontab` (though daemonization is in the works)
 
 ```
 */5 * * * * node path/to/dynadns/index.js
 ```
+
+There's also the `--daemon` argument, which will keep the script alive to check and update the record as needed, the rate at which is defined by the `INTERVAL` setting in your configuration. This mode is made for use with [PM2](https://pm2.keymetrics.io/), or `systemd`
+
 ---
 
 # Roadmap
 
-- Refactor check and update into separate implementations
-- Actually parse command line arguments
-- Error handling for missing `.env`
-- *[in progress]* Daemon mode with intervaled external IP check (for use with [PM2](https://pm2.keymetrics.io/), or `systemd`)
+- ~~Refactor check and update into separate implementations~~
+- ~~Actually parse command line arguments~~
+- ~~Daemon mode with intervaled external IP check (for use with [PM2](https://pm2.keymetrics.io/), or `systemd`)~~
+- ~~Error handling for missing `.env`~~
 - Support for Windows and Linux (may work already)
 - Support for additional registrars
 - Support for custom functionality (for providers without APIs)
 - Support for additional record types (AAAA, CNAME, TXT, MX, PTR)
 - Support for multiple record updates
-- Daemon install / uninstall command (macOS, Linux)
+
 
 Feel free to contribute 😎
