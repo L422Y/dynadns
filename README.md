@@ -46,15 +46,30 @@ SECRET=l2n3ruihf2oq980efno2i3nf2
 You can obtain your KEY and SECRET here:
 * GoDaddy: https://developer.godaddy.com/keys
 
-## Constantly update the address
+## Updating in the background
 
-One way to do this is by using `crontab` (though daemonization is in the works)
+
+### Option 1 (Preferred)
+The `--daemon` argument was made to keep the script alive and allow it to check and update the record as needed, the rate at which this happens is defined by the `INTERVAL` setting in your configuration, in seconds. This mode is made for use with [PM2](https://pm2.keymetrics.io/), or `systemd`
+
+Example PM2 installation:
+```
+npm install -g pm2
+pm2 start --name DYNADNS index.js -- --daemon
+pm2 save
+```
+
+`pm2 startup` will give you a command to run to enable starting pm2 on boot and restoring any processes.
+
+`pm2 log` and `pm2 status` will let you make sure the script is running.
+
+
+### Option 2
+Alternatively by using `crontab`
 
 ```
 */5 * * * * node path/to/dynadns/index.js
 ```
-
-There's also the `--daemon` argument, which will keep the script alive to check and update the record as needed, the rate at which is defined by the `INTERVAL` setting in your configuration. This mode is made for use with [PM2](https://pm2.keymetrics.io/), or `systemd`
 
 ---
 
