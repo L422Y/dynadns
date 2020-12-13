@@ -25,9 +25,12 @@
   "homepage": "https://github.com/L422Y/dynadns#readme",
   "dependencies": {
     "axios": "^0.21.0",
-    "dotenv": "^8.2.0"
+    "daemonize-process": "^3.0.0",
+    "dotenv": "^8.2.0",
+    "named-mutex": "^1.0.4"
   },
   "devDependencies": {
+    "parallelshell": "^3.0.1",
     "yarn-or-npm": "^3.0.1"
   }
 }
