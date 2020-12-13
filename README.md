@@ -79,6 +79,7 @@ Alternatively by using `crontab`
 - ~~Actually parse command line arguments~~
 - ~~Daemon mode with intervaled external IP check (for use with [PM2](https://pm2.keymetrics.io/), or `systemd`)~~
 - ~~Error handling for missing `.env`~~
+- Callbacks / Webhooks after successful updates
 - Support for Windows and Linux (may work already)
 - Support for additional registrars
 - Support for custom functionality (for providers without APIs)
