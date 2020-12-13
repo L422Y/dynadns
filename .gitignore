@@ -4,3 +4,5 @@ package-lock.json
 .idea
 node_modules/
 .env
+lastip.dat
+*.log
