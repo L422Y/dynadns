@@ -1,20 +1,22 @@
-const dotenv = require('dotenv')
+const fs = require('fs');
 const dyndns = require('./lib/dyndns')
 const providers = require('./lib/providers')
 try {
-	const env = dotenv.config()
-	if (env.parsed) {
-		const opts = env.parsed
-
-		if (process.env.PROVIDER in providers) {
-			let instance = new dyndns(opts);
-		} else {
-			console.log(`Provider not found: ${process.env.PROVIDER}`)
-		}
+	let config = JSON.parse(fs.readFileSync('config.json'));
+	let configError = false;
+	if ('accounts' in config) {
+		Object.values(config.accounts).forEach(acct => {
+			if (!(acct.provider in providers)) {
+				console.log(`[config] provider "${acct.provider}" not supported`)
+				configError = true
+			}
+		});
 	} else {
-		console.error('Error reading your .env configuration')
-		process.exit(1)
+		console.log(`[config] "accounts" config tree not found`)
+		configError = true
 	}
+	if (configError) process.exit(1);
+	let instance = new dyndns(config);
 } catch (err) {
 	console.log(err)
 	process.exit(1)

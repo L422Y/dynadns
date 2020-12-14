@@ -1,0 +1,33 @@
+{
+    "options": {
+        "INTERVAL": 600,
+        "DEBUG": true,
+        "LOG": true
+    },
+    "accounts": [
+        {
+            "provider": "godaddy",
+            "key": "KEYKEYKEYKEYKEYKEYKEYKEYKEYKEYKEYKEY",
+            "secret": "SECRETSECRETSECRETSECRET",
+            "records": {
+                "yourdomain.com": [
+                    {
+                        "type": "A",
+                        "host": "test123",
+                        "value": "#IPADDRESS#"
+                    },
+                    {
+                        "type": "MX",
+                        "host": "test123",
+                        "value": "ASPMX.L.GOOGLE.COM"
+                    },
+                    {
+                        "type": "TXT",
+                        "host": "test123",
+                        "value": "v=spf1 mx include:spf.protection.outlook.com ip4:#IPADDRESS# ~all"
+                    }
+                ]
+            }
+        }
+    ]
+}
