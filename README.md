@@ -10,37 +10,67 @@ Currently supported providers: *GoDaddy*
 
 ## Installation
 
- ```
+ ```shell
  git clone https://github.com/L422Y/dynadns/
  cd dynadns
- cp .env.example .env
+ cp config.json.example config.json
  npm install
  ```
 
 ## Configuration
 
-Modify your `.env`:
+Modify your `config.json`:
 
+### Base options
+```json
+{
+    "options": {
+        "INTERVAL": 600,
+        "DEBUG": true,
+        "LOG": true
+    },
 ```
-PROVIDER=godaddy
-HOST=abc123
-DOMAIN=domain.com
-DEBUG=true
-INTERVAL=60
-
-KEY=2o43tij2843g0924jngf29j34g02n934g0923n4g02g39
-SECRET=l2n3ruihf2oq980efno2i3nf2
-```
-
-`PROVIDER` is the provider (godaddy only, for now)
-
-`HOST` is the subdomain you'd like to update the `A` record for
-
-`DOMAIN` is the domain to modify
 
 `DEBUG` enables messages to `stdout`
-
 `INTERVAL` enables messages to `stdout`
+
+### Accounts
+
+For each account, you need to set the provider, key, secret and setup the records object.
+Record entries are grouped by domain, which is stored as the key for each group of records.
+
+`#IPADDRESS#` will be replaced with your current external IP address.
+
+```
+    "accounts": [
+        {
+            "provider": "godaddy",
+            "key": "KEYKEYKEYKEYKEYKEYKEYKEYKEYKEYKEYKEY",
+            "secret": "SECRETSECRETSECRETSECRET",
+            "records": {
+                "yourdomain.com": [
+                    {
+                        "type": "A",
+                        "host": "test123",
+                        "value": "#IPADDRESS#"
+                    },
+                    {
+                        "type": "MX",
+                        "host": "test123",
+                        "value": "ASPMX.L.GOOGLE.COM"
+                    },
+                    {
+                        "type": "TXT",
+                        "host": "test123",
+                        "value": "v=spf1 mx include:spf.protection.outlook.com ip4:#IPADDRESS# ~all"
+                    }
+                ]
+            }
+        }
+    ]
+}
+```
+
 
 
 You can obtain your KEY and SECRET here:
@@ -53,7 +83,7 @@ You can obtain your KEY and SECRET here:
 The `--daemon` argument was made to keep the script alive and allow it to check and update the record as needed, the rate at which this happens is defined by the `INTERVAL` setting in your configuration, in seconds. This mode is made for use with [PM2](https://pm2.keymetrics.io/), or `systemd`
 
 Example PM2 installation:
-```
+```shell
 npm install -g pm2
 pm2 start --name DYNADNS index.js -- --daemon
 pm2 save
@@ -67,7 +97,7 @@ pm2 save
 ### Option 2
 Alternatively by using `crontab`
 
-```
+```shell
 */5 * * * * node path/to/dynadns/index.js
 ```
 
