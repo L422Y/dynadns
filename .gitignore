@@ -7,3 +7,4 @@ node_modules/
 lastip.dat
 *.log
 *.log.*
+config.json
