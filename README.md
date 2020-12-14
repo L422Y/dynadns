@@ -10,7 +10,7 @@ Currently supported providers: *GoDaddy*
 
 ## Installation
 
- ```shell
+ ```sh
  git clone https://github.com/L422Y/dynadns/
  cd dynadns
  cp config.json.example config.json
@@ -23,7 +23,6 @@ Modify your `config.json`:
 
 ### Base options
 ```json
-{
     "options": {
         "INTERVAL": 600,
         "DEBUG": true,
@@ -41,7 +40,7 @@ Record entries are grouped by domain, which is stored as the key for each group 
 
 `#IPADDRESS#` will be replaced with your current external IP address.
 
-```
+```json
     "accounts": [
         {
             "provider": "godaddy",
@@ -68,7 +67,6 @@ Record entries are grouped by domain, which is stored as the key for each group 
             }
         }
     ]
-}
 ```
 
 
