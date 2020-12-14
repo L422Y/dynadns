@@ -28,5 +28,8 @@
   "devDependencies": {
     "parallelshell": "^3.0.1",
     "yarn-or-npm": "^3.0.1"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/@L422Y"
   }
 }
